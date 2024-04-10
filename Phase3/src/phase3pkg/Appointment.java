@@ -1,40 +1,98 @@
 package phase3pkg;
-import java.util.Date;
-public class Appointment 
-{
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Appointment {
     private String appointmentID;
     private String patientID;
     private String doctorID;
-    private Date date;
-    private String time;
+    private LocalDateTime dateTime;
     private String purpose;
-<<<<<<< Updated upstream
-    public Appointment(String appointmentID, String patientID, String doctorID, Date date, String time, String purpose)
-    {
-=======
 
- 
+
 
     public Appointment(String appointmentID, String patientID, String doctorID, LocalDateTime dateTime, String purpose) {
->>>>>>> Stashed changes
         this.appointmentID = appointmentID;
         this.patientID = patientID;
         this.doctorID = doctorID;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
         this.purpose = purpose;
     }
-    public void schedule() 
-    {
-       //TODO
+
+    public void schedule(String specialty) {
+        DoctorManager manager = DoctorManager.getInstance();
+        Doctor doctor = manager.findDoctor(doctorID, null); // Try finding by ID first
+
+        if (doctor == null || !doctor.isAvailable(dateTime)) {
+            doctor = manager.findDoctorBySpecialtyAndDate(specialty, dateTime);
+            if (doctor != null) {
+                this.doctorID = doctor.getDoctorID();
+                new Message("msg001", "system", patientID,
+                        "Appointment scheduled by specialty fallback for " +
+                                dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) +
+                                " with Dr. " + doctor.getName()).sendMessage();
+                doctor.addAppointment(this);
+            } else {
+                new Message("msg002", "system", patientID,
+                        "No available doctors found for this date and specialty.").sendMessage();
+                return;
+            }
+        } else {
+            new Message("msg003", "system", patientID,
+                    "Appointment scheduled for " +
+                            dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) +
+                            " with Dr. " + doctor.getName()).sendMessage();
+            doctor.addAppointment(this);
+        }
     }
-    public void reschedule(Date newDate, String newTime) 
-    {
-        this.date = newDate;
-        this.time = newTime;
+
+    public void reschedule(LocalDateTime oldDateTime, LocalDateTime newDateTime) {
+        DoctorManager manager = DoctorManager.getInstance();
+        Doctor doctor = manager.findDoctor(doctorID, null);
+        if (doctor != null && doctor.isAvailable(newDateTime)) {
+            new Message("msg004", "system", patientID,
+                    "Rescheduling appointment from " + this.dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) +
+                            " to " + newDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)).sendMessage();
+            this.dateTime = newDateTime;
+            // Update the appointment in doctor's schedule (not shown here)
+        } else {
+            new Message("msg005", "system", patientID,
+                    "Unable to reschedule, doctor not available at the new time.").sendMessage();
+        }
     }
-    public void cancel() 
-    {
-       //TODO
+
+    public void cancel() {
+        // Logic to remove the appointment from doctor's schedule
+        new Message("msg006", "system", patientID,
+                "Cancelling appointment scheduled for " + dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)).sendMessage();
+        // Remove this appointment from doctor's schedule (not shown here)
     }
+
+
+    // Getters and setters as needed
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getDoctorID() {
+        return doctorID;
+    }
+
+    public String getPatientID() {
+        return patientID;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public String getAppointmentID() {
+        return appointmentID;
+    }
+
 }
