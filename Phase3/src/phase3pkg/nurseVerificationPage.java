@@ -14,14 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class nurseVerfication extends Application {
+public class nurseVerification extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        Label staffLabel = new Label("Nurse Verfication");
+        Label staffLabel = new Label("Nurse Verification");
         staffLabel.getStyleClass().add("title-label");
         Label userIDLabel = new Label("ID Number");
         Label passwordLabel = new Label("Password");
