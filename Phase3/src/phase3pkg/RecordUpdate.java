@@ -1,7 +1,5 @@
 package phase3pkg;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 public class RecordUpdate 
 {
     private Date updateDate;
@@ -23,5 +21,17 @@ public class RecordUpdate
         {
             updateFields.remove(field);
         } 
+    }
+    public Date getUpdateDate()
+    {
+    	return updateDate;
+    }
+    public Map<String, String> getUpdateFields()
+    {
+    	return updateFields;
+    }
+    public String getUpdaterID()
+    {
+    	return updaterID;
     }
 }

@@ -9,18 +9,25 @@ public class Nurse extends User
         this.nurseID = nurseID;
         this.qualifications = qualifications;
     }
-    public PatientRecord searchPatientRecord(String patientID)
+    public PatientRecord searchPatientRecord(String patientID) 
     {
-        //TODO
-        return null;
+        return PatientRecord.loadFromFile(patientID);
     }
     public MedicalHistory accessPatientHistory(String patientID) 
     {
-        //TODO
-        return new MedicalHistory();
+        return MedicalHistory.loadFromFile(patientID);
     }
     public void updateVitals(String patientID, Vitals vitals) 
     {
-       //TODO
+        PatientRecord patientRecord = searchPatientRecord(patientID);
+        if (patientRecord != null) 
+        {
+            patientRecord.updateVitals(vitals);
+            patientRecord.saveToFile();
+        } 
+        else 
+        {
+            System.err.println("Patient record not found for ID: " + patientID);
+        }
     }
 }

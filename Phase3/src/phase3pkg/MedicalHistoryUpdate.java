@@ -1,7 +1,5 @@
 package phase3pkg;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 public class MedicalHistoryUpdate 
 {
     private Date updateDate;
@@ -26,5 +24,17 @@ public class MedicalHistoryUpdate
     public void addImmunization(Immunization immunization) 
     {
         immunizationsAdded.add(immunization);
+    }
+    public List<String> getAllergiesAdded()
+    {
+    	return allergiesAdded;
+    }
+    public List<String> getConditionsAdded()
+    {
+    	return conditionsAdded;
+    }
+    public List<Immunization> getImmunizationsAdded()
+    {
+    	return immunizationsAdded;
     }
 }

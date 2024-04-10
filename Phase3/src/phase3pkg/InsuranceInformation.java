@@ -1,4 +1,5 @@
 package phase3pkg;
+import java.io.*;
 public class InsuranceInformation 
 {
     private String patientID;
@@ -15,6 +16,21 @@ public class InsuranceInformation
     public void updateCoverageDetails(String details) 
     {
         this.coverageDetails = details;
-        //TODO
+        saveToFile();
+    }
+    private void saveToFile()
+    {
+        String filename = "Data/InsuranceInformation/" + this.patientID + "_" + this.policyNumber + ".txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) 
+        {
+            writer.write("PatientID: " + this.patientID + "\n");
+            writer.write("Insurer: " + this.insurer + "\n");
+            writer.write("PolicyNumber: " + this.policyNumber + "\n");
+            writer.write("CoverageDetails: " + this.coverageDetails + "\n");
+        } 
+        catch (IOException e) 
+        {
+            System.err.println("Failed to save insurance information to file: " + e.getMessage());
+        }
     }
 }

@@ -36,4 +36,28 @@ public class User
 	{
 		return loggedIn;
 	}
+	public String getName()
+	{
+		return name;
+	}
+	public String getUserID()
+	{
+		return userID;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public String getContactInformation()
+	{
+		return contactInformation;
+	}
+	public void setName(String newName) 
+    {
+        this.name = newName;
+    }
+    public void setContactInformation(String newContactInformation) 
+    {
+        this.contactInformation = newContactInformation;
+    }
 }

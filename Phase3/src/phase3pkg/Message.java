@@ -1,5 +1,6 @@
 package phase3pkg;
-import java.util.Date;
+import java.io.*;
+import java.util.*;
 public class Message 
 {
     private String messageID;
@@ -17,10 +18,28 @@ public class Message
         this.sentDate = null; 
         this.isRead = false;
     }
+    private void saveToFile() 
+    {
+        String filename = "Data/Messages/" + this.receiverID + "_messages.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) 
+        {
+            writer.write("MessageID: " + this.messageID + "\n");
+            writer.write("SenderID: " + this.senderID + "\n");
+            writer.write("ReceiverID: " + this.receiverID + "\n");
+            writer.write("Content: " + this.content + "\n");
+            writer.write("SentDate: " + this.sentDate.toString() + "\n");
+            writer.write("IsRead: " + this.isRead + "\n");
+            writer.write("----\n");
+        } 
+        catch (IOException e) 
+        {
+            System.err.println("Failed to save message: " + e.getMessage());
+        }
+    }
     public void sendMessage() 
     {
         this.sentDate = new Date();
-        //TODO
+        saveToFile();
     }
     public void markAsRead() 
     {

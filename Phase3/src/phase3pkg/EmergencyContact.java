@@ -1,5 +1,5 @@
 package phase3pkg;
-import java.util.Map;
+import java.util.*;
 public class EmergencyContact 
 {
     private String patientID;
