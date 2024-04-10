@@ -1,6 +1,17 @@
 package phase3pkg;
+<<<<<<< Updated upstream
 public class Doctor extends User 
 {
+=======
+
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+ 
+public class Doctor extends User {
+>>>>>>> Stashed changes
     private String doctorID;
     private String specialty;
     public Doctor(String userID, String password, String name, String contactInformation, String doctorID, String specialty) 

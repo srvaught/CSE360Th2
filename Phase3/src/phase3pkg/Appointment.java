@@ -8,8 +8,15 @@ public class Appointment
     private Date date;
     private String time;
     private String purpose;
+<<<<<<< Updated upstream
     public Appointment(String appointmentID, String patientID, String doctorID, Date date, String time, String purpose)
     {
+=======
+
+ 
+
+    public Appointment(String appointmentID, String patientID, String doctorID, LocalDateTime dateTime, String purpose) {
+>>>>>>> Stashed changes
         this.appointmentID = appointmentID;
         this.patientID = patientID;
         this.doctorID = doctorID;
