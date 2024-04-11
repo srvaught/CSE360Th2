@@ -8,7 +8,7 @@ public class MedicalHistoryUpdate
     private List<Immunization> immunizationsAdded;
     public MedicalHistoryUpdate() 
     {
-        this.updateDate = new Date();
+        this.updateDate = new Date(); 
         this.allergiesAdded = new ArrayList<>();
         this.conditionsAdded = new ArrayList<>();
         this.immunizationsAdded = new ArrayList<>();
