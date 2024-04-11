@@ -2,7 +2,7 @@ package evenRecognizerTestbed;
 import java.util.*;
 import java.io.*;
 public class InsuranceClaim 
-{
+{ 
     private String claimID;
     private String patientID;
     private String insuranceInformationID;
