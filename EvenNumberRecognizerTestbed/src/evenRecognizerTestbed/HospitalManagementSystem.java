@@ -288,6 +288,7 @@ public class HospitalManagementSystem extends Application {
 
        
         Button saveChangesButton = new Button("Save Changes");
+        //
         saveChangesButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white; -fx-cursor: default;");
         saveChangesButton.setDisable(true); // Assuming saving is disabled for now
 
