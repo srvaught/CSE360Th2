@@ -77,9 +77,10 @@ public class Main extends Application {
         grid.add(weightLabel, 0, 8);
         grid.add(weightField, 1, 8);
         grid.add(saveButton, 1, 9);
-
+        
+// Set action for save button
         saveButton.setOnAction(e -> saveVitals());
-
+// a scene with the grid layout and its size
         Scene scene = new Scene(grid, 500, 500);
         primaryStage.setTitle("Vitals");
         primaryStage.setScene(scene);
