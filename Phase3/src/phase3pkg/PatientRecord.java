@@ -14,7 +14,7 @@ public class PatientRecord
         this.patientID = patientID;
         this.prescriptions = new ArrayList<>();
         this.visitSummaries = new ArrayList<>();
-        //TODO
+        
     }
     private void saveMedicalHistoryToFile() 
     {
