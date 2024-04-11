@@ -41,7 +41,7 @@ public class DoctorManager
             List<Doctor> specialists = doctorsBySpecialty.get(specialty);
             if (specialists != null && !specialists.isEmpty()) 
             {
-                return specialists.get(0); // Return the first specialist
+                return specialists.get(0); 
             }
         }
         return doctor;
