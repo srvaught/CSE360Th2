@@ -1,6 +1,7 @@
 package phase3pkg;
 import java.util.*;
 import java.text.*;
+// This class keeps track of all the details related to a medical visit, like when it happened, why, what was diagnosed, how it was treated, and any prescriptions given.
 public class VisitSummary
 {
     private Date visitDate;
@@ -16,6 +17,7 @@ public class VisitSummary
         this.treatment = treatment;
         this.prescriptionGiven = new ArrayList<>();
     }
+// Parses a string representation of a visit summary into its individual components.
     public void addPrescription(Prescription prescription) 
     {
         prescriptionGiven.add(prescription);
