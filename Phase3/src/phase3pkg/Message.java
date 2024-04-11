@@ -44,6 +44,6 @@ public class Message
     public void markAsRead() 
     {
         this.isRead = true;
-        //TODO
+        
     }
 }
