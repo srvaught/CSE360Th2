@@ -174,7 +174,7 @@ public class HospitalManagementSystem extends Application {
             switch (userRole) {
                 case "Patient":
                     if ("Patient".equals(user.role)) {
-                        showPatientPortal();
+                        showPatientPortal(null);
                     } else {
                         showError("Login Failed", "You do not have Patient access.");
                     }
@@ -289,7 +289,7 @@ public class HospitalManagementSystem extends Application {
         primaryStage.show();
     }
     
-    private void showPatientPortal() {
+    private void showPatientPortal(Runnable cb) {
         VBox patientPortal = new VBox(15); // Increased spacing between elements
         patientPortal.setPadding(new Insets(20));
         patientPortal.setStyle("-fx-background-color: #f0f0f0"); // Light gray background
@@ -335,10 +335,13 @@ public class HospitalManagementSystem extends Application {
 
         // Add the Back Button here, right after its declaration and before the visit summaries section
         Button backButton = new Button("Back");
-        backButton.setOnAction(e -> {
-            // Navigate back to the desired screen
-            showLogin();
-        });
+        if (cb != null) {
+            // If a callback is provided, use it
+            backButton.setOnAction(e -> cb.run());
+        } else {
+            // If no callback is provided, default to showing the login screen
+            backButton.setOnAction(e -> showLogin());
+        }
         // Make sure to add the backButton to the VBox
         patientPortal.getChildren().add(backButton);
 
@@ -649,21 +652,132 @@ public class HospitalManagementSystem extends Application {
    
 
     private void listPrescribedMedications() {
-        // Placeholder method for listing prescribed medications.
-        System.out.println("Listing prescribed medications...");
-        // Implement functionality based on your application's requirements
+        // Main container for this view
+        VBox mainContainer = new VBox(20);
+        mainContainer.setPadding(new Insets(20));
+        mainContainer.setStyle("-fx-background-color: #f0f0f0;");
+
+        // Patient Information at the top
+        Label patientInfoLabel = new Label("Patient: John Doe");
+        patientInfoLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #206090; -fx-padding: 5px;");
+        HBox patientInfoBox = new HBox(patientInfoLabel);
+        patientInfoBox.setStyle("-fx-background-color: #e0e0e0; -fx-border-color: #c0c0c0; -fx-border-width: 1px; -fx-border-radius: 5px;");
+
+        // Back button
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
+        backButton.setOnAction(e -> showDoctorDashboard()); // Assuming showDoctorDashboard is a method to go back
+
+        // Title for the Medications section
+        Label title = new Label("Prescribed Medications");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
+
+        // Medication details
+        Label medicationDetails = new Label(
+                "Medication: Amoxicillin\n" +
+                        "Dosage: 500mg\n" +
+                        "Frequency: Three times a day\n" +
+                        "Prescribed by: Dr. Smith\n" +
+                        "Date: 01/01/2024\n\n" +
+                        "Medication: Ibuprofen\n" +
+                        "Dosage: 400mg\n" +
+                        "Frequency: As needed for pain\n" +
+                        "Prescribed by: Dr. Smith\n" +
+                        "Date: 15/01/2024"
+        );
+        medicationDetails.setStyle("-fx-background-color: white; -fx-padding: 10px;");
+
+        // Add components to the main container
+        mainContainer.getChildren().addAll(backButton, patientInfoBox, title, medicationDetails);
+
+        // Set the main container as the center of the root layout
+        rootLayout.setCenter(mainContainer); // Assuming rootLayout is the main layout in your scene
     }
 
     private void sendPrescriptionToPharmacy() {
-        // Placeholder method for sending prescriptions to a pharmacy.
-        System.out.println("Sending prescription to the pharmacy...");
-        // Implement functionality based on your application's requirements
+        VBox prescriptionForm = new VBox(10);
+        prescriptionForm.setPadding(new Insets(20));
+        prescriptionForm.setStyle("-fx-background-color: #f0f0f0;");
+
+        // Title
+        Label formTitle = new Label("Send Prescription to Pharmacy");
+        formTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
+
+        // Patient Information
+        Label patientInfoLabel = new Label("Patient: John Doe");
+        patientInfoLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #206090; -fx-padding: 5px;");
+
+        // Prescription Details Form
+        TextField medicationField = new TextField();
+        medicationField.setPromptText("Medication");
+
+        TextField dosageField = new TextField();
+        dosageField.setPromptText("Dosage");
+
+        TextField frequencyField = new TextField();
+        frequencyField.setPromptText("Frequency");
+
+        ComboBox<String> pharmacyComboBox = new ComboBox<>();
+        pharmacyComboBox.setPromptText("Select Pharmacy");
+        // Hypothetical pharmacy names for the combo box
+        pharmacyComboBox.getItems().addAll("Pharmacy A", "Pharmacy B", "Pharmacy C");
+
+        Button sendButton = new Button("Send to Pharmacy");
+        sendButton.setStyle("-fx-background-color: #5cb85c; -fx-text-fill: white;");
+        sendButton.setOnAction(e -> {
+            // Logic to handle sending the prescription
+            System.out.println("Sending prescription: " + medicationField.getText() + ", " +
+                    dosageField.getText() + ", " +
+                    frequencyField.getText() + " to " + pharmacyComboBox.getValue());
+            showAlert("Success", "The prescription has been sent to the pharmacy.");
+
+        });
+
+        // Back button
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
+        backButton.setOnAction(e -> showDoctorDashboard()); // Assume showDoctorDashboard is a method to go back
+
+        // Adding all elements to the form
+        prescriptionForm.getChildren().addAll(formTitle, patientInfoLabel, medicationField, dosageField, frequencyField, pharmacyComboBox, sendButton, backButton);
+
+        // Set the prescription form as the center of the root layout
+        rootLayout.setCenter(prescriptionForm); // Assuming rootLayout is the main layout in your scene
     }
 
     private void accessPatientRecords() {
-        // Placeholder method for accessing patient records.
-        System.out.println("Accessing patient records...");
-        // Implement functionality based on your application's requirements
+        VBox patientRecordsForm = new VBox(10);
+        patientRecordsForm.setPadding(new Insets(20));
+        patientRecordsForm.setStyle("-fx-background-color: #f0f0f0;");
+
+        Label formTitle = new Label("Access Patient Records");
+        formTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
+
+        TextField patientIdField = new TextField();
+        patientIdField.setPromptText("Enter Patient ID");
+
+        Button submitButton = new Button("Access Records");
+        submitButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
+        submitButton.setOnAction(e -> {
+            String patientId = patientIdField.getText();
+            // Logic to verify the patient ID could go here, such as checking if the ID exists in the database
+            if (patientId.equals("1234")) { // Replace with actual verification logic
+                showPatientPortal(this::showDoctorDashboard); // Assuming this method displays the patient portal for the given ID
+            } else {
+                showAlert("Error", "Patient ID not found. Please try again.");
+            }
+        });
+
+        patientRecordsForm.getChildren().addAll(formTitle, patientIdField, submitButton);
+        rootLayout.setCenter(patientRecordsForm); // Assuming rootLayout is the main layout in your scene
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {
