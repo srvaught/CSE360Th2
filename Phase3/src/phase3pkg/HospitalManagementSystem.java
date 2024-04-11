@@ -519,9 +519,18 @@ public class HospitalManagementSystem extends Application {
             System.out.println("Greeted Patient: " + selectedPatient);
         });
 
-        greetPatientView.getChildren().addAll(greetingLabel, appointmentList, greetButton);
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            // Navigate back to the nurse dashboard
+            showNurseDashboard();
+            // If you have different dashboards for nurses and doctors, you might want to make this dynamic
+            // based on the user role
+        });
+
+        greetPatientView.getChildren().addAll(greetingLabel, appointmentList, greetButton, backButton);
         rootLayout.setCenter(greetPatientView);
     }
+
 
     private void showNurseDashboard() {
         VBox nurseDashboard = new VBox(10);
