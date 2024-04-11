@@ -143,4 +143,7 @@ public class PatientRecord
             System.err.println("Failed to save patient record: " + e.getMessage());
         }
     }
+    public void setPatientName(String patientName) {
+        this.patientID = patientName;
+    }
 }
