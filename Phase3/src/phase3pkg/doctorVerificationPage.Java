@@ -42,7 +42,7 @@ public class doctorVerification extends Application {
         grid.add(passwordLabel, 0, 2);
         grid.add(passwordField, 1, 2);
         grid.add(loginButton, 1, 3);
-
+// Set action for login button
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -66,7 +66,7 @@ public class doctorVerification extends Application {
                 }
             }
         });
-
+// Create a scene with the grid layout and set its size
         Scene scene = new Scene(grid, 350, 350);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setTitle("Doctor Page");
