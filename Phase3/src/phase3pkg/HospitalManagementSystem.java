@@ -15,9 +15,16 @@ import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class HospitalManagementSystem extends Application {
 
@@ -535,17 +542,14 @@ public class HospitalManagementSystem extends Application {
 
         Button accessHistoryButton = new Button("Access Patient History");
         accessHistoryButton.setOnAction(e -> showAccessHistoryView());
-        
-        Button homeButton = new Button("Home");
-        homeButton.setOnAction(e -> showNurseDashboard());
-        nurseDashboard.getChildren().add(homeButton);
 
         Button logoutButton = new Button("Log Out");
         logoutButton.setOnAction(e -> showLogin());
 
-        nurseDashboard.getChildren().addAll(dashboardLabel, greetPatientButton, registerRecordButton, takeVitalsButton, accessHistoryButton);
+        nurseDashboard.getChildren().addAll(dashboardLabel, greetPatientButton, registerRecordButton, takeVitalsButton, accessHistoryButton, logoutButton);
         rootLayout.setCenter(nurseDashboard);
     }
+
 
     private void showDoctorDashboard() {
         VBox doctorDashboard = new VBox(10);
@@ -581,6 +585,8 @@ public class HospitalManagementSystem extends Application {
         doctorDashboard.getChildren().addAll(dashboardLabel, accessHistoryButton, listMedicationsButton, sendPrescriptionButton, accessRecordsButton, homeButton, logoutButton);
         rootLayout.setCenter(doctorDashboard);
     }
+
+   
 
     private void listPrescribedMedications() {
         // Placeholder method for listing prescribed medications.
