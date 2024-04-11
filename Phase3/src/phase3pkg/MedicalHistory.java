@@ -22,7 +22,7 @@ public class MedicalHistory
     public void addAllergy(String allergy) 
     {
         allergies.add(allergy);
-    }
+    }     
     public void addPastIllness(String illness) 
     {
         pastIllnesses.add(illness);
