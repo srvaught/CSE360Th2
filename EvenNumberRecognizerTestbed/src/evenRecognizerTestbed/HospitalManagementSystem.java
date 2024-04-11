@@ -1,5 +1,5 @@
 package evenRecognizerTestbed;
-//////
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,18 +27,16 @@ import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 public class HospitalManagementSystem extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
     private String userRole = "";
 
-    private Map<String, User> users = new HashMap<>(); // Simulate a simple user store
+    private Map<String, User> users = new HashMap<>(); 
 
     public HospitalManagementSystem() {
-        // Populate with sample users for demonstration
+
         users.put("patient1", new User("patient1", "password123", "Patient"));
         users.put("doctor1", new User("doctor1", "securepassword", "Doctor"));
         users.put("nurse1", new User("nurse1", "medicalpass", "Nurse"));
@@ -101,7 +99,6 @@ public class HospitalManagementSystem extends Application {
         vitalsGrid.setVgap(10);
         vitalsGrid.setHgap(10);
 
-        // Define labels and text fields for vitals information
         Label titleLabel = new Label("Enter Patient Vitals");
         vitalsGrid.add(titleLabel, 0, 0, 2, 1);
 
@@ -113,7 +110,6 @@ public class HospitalManagementSystem extends Application {
         TextField heightField = new TextField();
         TextField weightField = new TextField();
 
-        // Add fields and labels to the grid
         vitalsGrid.addRow(1, new Label("Temperature (°F):"), temperatureField);
         vitalsGrid.addRow(2, new Label("Blood Pressure (mmHg):"), bloodPressureField);
         vitalsGrid.addRow(3, new Label("Heart Rate (bpm):"), heartRateField);
@@ -122,7 +118,6 @@ public class HospitalManagementSystem extends Application {
         vitalsGrid.addRow(6, new Label("Height (ft):"), heightField);
         vitalsGrid.addRow(7, new Label("Weight (lb):"), weightField);
 
-        // Save Button with action to save vitals
         Button saveButton = new Button("Save");
         vitalsGrid.add(saveButton, 1, 8);
         saveButton.setOnAction(e -> saveVitals(
@@ -135,42 +130,36 @@ public class HospitalManagementSystem extends Application {
             weightField.getText()
         ));
 
-        // Back Button to navigate back to the Nurse Dashboard
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> showNurseDashboard());
         vitalsGrid.add(backButton, 1, 9);
 
-        // Setting the vitals grid to the center of the root layout
         rootLayout.setCenter(vitalsGrid);
     }
 
     private void saveVitals(String temperature, String bloodPressure, String heartRate, String respiratoryRate, String oxygenSaturation, String height, String weight) {
-        // Here you will implement the logic to create a Vitals object and save it to the PatientRecord.
-        // For demonstration, let's assume we're dealing with a hardcoded patient ID.
-        String patientId = "patient123"; // This should be dynamically determined based on your application's context
+
+        String patientId = "patient123"; 
 
         Vitals vitals = new Vitals();
 
-        // Now, fetch the patient record, update it with new vitals, and save
-        PatientRecord record = PatientRecord.loadFromFile(patientId); // Implement this method to load a patient record
+        PatientRecord record = PatientRecord.loadFromFile(patientId); 
         if (record != null) {
-            record.updateVitals(vitals); // Make sure you have this method in your PatientRecord class
-            record.saveToFile(); // And this one to save the record back to file
+            record.updateVitals(vitals); 
+            record.saveToFile(); 
             System.out.println("Vitals saved for patient ID: " + patientId);
         } else {
             System.err.println("Patient record not found for ID: " + patientId);
         }
     }
 
-    
     private void handleLogin(String username, String password, ToggleGroup roleGroup) {
-        User user = users.get(username); // Attempt to get the user by username
+        User user = users.get(username); 
         RadioButton selectedRole = (RadioButton) roleGroup.getSelectedToggle();
         String userRole = selectedRole.getText();
 
-        // Check if the user exists and password matches
         if (user != null && user.authenticate(password)) {
-            // Check user's role and show the appropriate dashboard
+
             switch (userRole) {
                 case "Patient":
                     if ("Patient".equals(user.role)) {
@@ -187,7 +176,7 @@ public class HospitalManagementSystem extends Application {
                     }
                     break;
                 case "Nurse":
-                    // Show Nurse Verification before dashboard
+
                     if ("Nurse".equals(user.role)) {
                         showNurseVerification();
                     } else {
@@ -199,12 +188,11 @@ public class HospitalManagementSystem extends Application {
                     break;
             }
         } else {
-            // Show error if login fails
+
             showError("Login Failed", "Invalid username or password.");
         }
     }
 
-    // Method to show error popups
     private void showError(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -213,25 +201,20 @@ public class HospitalManagementSystem extends Application {
         alert.showAndWait();
     }
 
-
     private void showError(String message) {
         Label errorLabel = new Label(message);
         errorLabel.setStyle("-fx-text-fill: red");
 
         Button tryAgainButton = new Button("Try Again");
         tryAgainButton.setOnAction(e -> {
-            rootLayout.setCenter(null); // Clear the existing error message
-            showLogin();                // Display the login form again
+            rootLayout.setCenter(null); 
+            showLogin();                
         });
 
         VBox errorBox = new VBox(10, errorLabel, tryAgainButton);
         errorBox.setAlignment(Pos.CENTER);
         rootLayout.setCenter(errorBox);
     }
-
-
-    
-
 
     private void showNurseVerification()
     {
@@ -283,69 +266,60 @@ public class HospitalManagementSystem extends Application {
         });
 
         Scene scene = new Scene(grid, 350, 350);
-      //  scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
         primaryStage.setTitle("Nurse Page");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    
-    private void showPatientPortal(Runnable cb) {
-        VBox patientPortal = new VBox(15); // Increased spacing between elements
-        patientPortal.setPadding(new Insets(20));
-        patientPortal.setStyle("-fx-background-color: #f0f0f0"); // Light gray background
 
-        // Patient Profile Section
+    private void showPatientPortal(Runnable cb) {
+        VBox patientPortal = new VBox(15); 
+        patientPortal.setPadding(new Insets(20));
+        patientPortal.setStyle("-fx-background-color: #f0f0f0"); 
+
         HBox profileBar = new HBox();
         profileBar.setStyle("-fx-padding: 10px 0px 10px 10px; -fx-background-color: #e0e0e0; -fx-border-radius: 5px 0px 0px 5px;");
 
         Label profileTitle = new Label("Profile Management");
-        profileTitle.setStyle("-fx-font-weight: bold; -fx-text-fill: #206090"); // Dark blue title, bold
+        profileTitle.setStyle("-fx-font-weight: bold; -fx-text-fill: #206090"); 
 
         Line separatorLine = new Line();
         separatorLine.setStroke(Color.color(0.8, 0.8, 0.8));
         separatorLine.setStrokeWidth(1);
-        separatorLine.setStartY(0);  // Start the line at the top
-        separatorLine.setEndY(40);   // Set the line's height
+        separatorLine.setStartY(0);  
+        separatorLine.setEndY(40);   
 
         profileBar.getChildren().addAll(profileTitle, separatorLine);
 
-        HBox profileDetails = new HBox(10); // Left-align labels
+        HBox profileDetails = new HBox(10); 
         Label nameLabel = new Label("Name: ");
-        nameLabel.setPrefWidth(80); // Adjust width if needed
+        nameLabel.setPrefWidth(80); 
 
         String patientInfo = "Jofin Doe\n" +
                 "123 Main St, Cityville\n" +
                 "123-456-7890\n" +
                 "johndoe@example.com";
         Label nameAndInfo = new Label(patientInfo);
-        nameAndInfo.setWrapText(true); // Enable line breaks for long content
+        nameAndInfo.setWrapText(true); 
 
         profileDetails.getChildren().addAll(nameLabel, nameAndInfo);
 
-        // Save Changes Button (Assuming non-functional in this example)
-      
-
-
-
-       
         Button saveChangesButton = new Button("Save Changes");
-        //
-        saveChangesButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white; -fx-cursor: default;");
-        saveChangesButton.setDisable(true); // Assuming saving is disabled for now
 
-        // Add the Back Button here, right after its declaration and before the visit summaries section
+        saveChangesButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white; -fx-cursor: default;");
+        saveChangesButton.setDisable(true); 
+
         Button backButton = new Button("Back");
         if (cb != null) {
-            // If a callback is provided, use it
+
             backButton.setOnAction(e -> cb.run());
         } else {
-            // If no callback is provided, default to showing the login screen
+
             backButton.setOnAction(e -> showLogin());
         }
-        // Make sure to add the backButton to the VBox
+
         patientPortal.getChildren().add(backButton);
 
-        // Past Visits Summaries Section
         VBox visitSummariesSection = new VBox(10);
         visitSummariesSection.setStyle("-fx-background-color: white; -fx-padding: 15px; -fx-border-radius: 5px;");
 
@@ -355,12 +329,11 @@ public class HospitalManagementSystem extends Application {
         visitSummariesSection.getChildren().addAll(visitHistoryTitle, createVisitSummary("10/25/2021", "Flu", "Rest and fluids"),
                 createVisitSummary("09/15/2021", "Allergies", "Antihistamines, Panadol Night"));
 
-        // Messaging System (Assuming non-functional in this example)
         Label messagingTitle = new Label("Messaging System");
         messagingTitle.setStyle("-fx-font-weight: bold; -fx-text-fill: #206090; -fx-margin-top: 20px;");
 
         HBox messageControls = new HBox(10);
-        ComboBox<String> recipientComboBox = new ComboBox<>(); // Placeholder for recipient list
+        ComboBox<String> recipientComboBox = new ComboBox<>(); 
         recipientComboBox.setDisable(true);
         TextField messageField = new TextField();
         messageField.setDisable(true);
@@ -369,15 +342,13 @@ public class HospitalManagementSystem extends Application {
 
         messageControls.getChildren().addAll(recipientComboBox, messageField, sendMessageButton);
 
-        // Assemble the UI
         patientPortal.getChildren().addAll(profileBar, profileDetails, saveChangesButton, visitSummariesSection, messagingTitle, messageControls);
         rootLayout.setCenter(patientPortal);
     }
 
-    // Helper method to create a visit summary tile
     private VBox createVisitSummary(String visitDate, String diagnosis, String treatment) {
         VBox visitSummary = new VBox(5);
-        visitSummary.setStyle("-fx-background-color: #e0e0e0; -fx-padding: 10px; -fx-border-radius: 5px;"); // Light gray background with rounded corners
+        visitSummary.setStyle("-fx-background-color: #e0e0e0; -fx-padding: 10px; -fx-border-radius: 5px;"); 
 
         Label dateLabel = new Label("Visit Date: " + visitDate);
         Label diagnosisLabel = new Label("Diagnosis: " + diagnosis);
@@ -437,15 +408,15 @@ public class HospitalManagementSystem extends Application {
         });
 
         Scene scene = new Scene(grid, 350, 350);
-       // scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
         primaryStage.setTitle("Doctor Page");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    // Helper class to represent a User
+
     private static class User {
         private final String username;
-        private final String password; // This should be hashed in a real application
+        private final String password; 
         private final String role;
 
         public User(String username, String password, String role) {
@@ -459,7 +430,6 @@ public class HospitalManagementSystem extends Application {
         }
     }
 
-    
     private void showAccessHistoryView() {
         VBox accessHistoryView = new VBox(10);
         accessHistoryView.setAlignment(Pos.CENTER);
@@ -475,8 +445,7 @@ public class HospitalManagementSystem extends Application {
         lookupButton.setOnAction(e -> {
             String patientId = patientIdLookupField.getText();
             PatientRecord record = PatientRecord.loadFromFile(patientId);
-            //String history = (record != null) ? record.getFormattedHistory() : "History not available for Patient ID: " + patientId;
-           // historyTextArea.setText(history);
+
         });
 
         Button backButton = new Button("Back");
@@ -485,7 +454,6 @@ public class HospitalManagementSystem extends Application {
         rootLayout.setCenter(accessHistoryView);
     }
 
-    
     private void showRegisterRecordView() {
         GridPane registerRecordView = new GridPane();
         registerRecordView.setAlignment(Pos.CENTER);
@@ -497,67 +465,60 @@ public class HospitalManagementSystem extends Application {
         patientIdField.setPromptText("Patient ID");
         TextField patientNameField = new TextField();
         patientNameField.setPromptText("Patient Name");
-        // Add more fields as necessary for registration
 
         Button saveRecordButton = new Button("Save Record");
         saveRecordButton.setOnAction(e -> {
             String patientId = patientIdField.getText().trim();
             String patientName = patientNameField.getText().trim();
-            // Validate input as necessary
-            
+
             if (!patientId.isEmpty() && !patientName.isEmpty()) {
                 PatientRecord patientRecord = new PatientRecord(patientId);
                 patientRecord.setPatientName(patientName);
-                // Set other details on the patientRecord as needed
-                
-                patientRecord.saveToFile(); // Saves the record to a file
-                
+
+                patientRecord.saveToFile(); 
+
                 System.out.println("Saved/Updated Record for: " + patientName);
-                // Optionally, clear the fields or show a confirmation message
+
             } else {
                 System.err.println("Patient ID and name must not be empty.");
-                // Show an error message to the user
+
             }
         });
-
 
         registerRecordView.add(new Label("Patient ID:"), 0, 0);
         registerRecordView.add(patientIdField, 1, 0);
         registerRecordView.add(new Label("Patient Name:"), 0, 1);
         registerRecordView.add(patientNameField, 1, 1);
-        // Add more fields to the grid as needed
+
         registerRecordView.add(saveRecordButton, 1, 3);
 
         Button backButton = new Button("Back");
-        backButton.setOnAction(e -> showNurseDashboard()); // Navigate back to the dashboard.
-        registerRecordView.add(backButton, 1, 4); // Adjust grid positioning as needed.
-        
+        backButton.setOnAction(e -> showNurseDashboard()); 
+        registerRecordView.add(backButton, 1, 4); 
+
         rootLayout.setCenter(registerRecordView);
-        
+
     }
 
     private void savePatientCheckIn(String name, String id) {
-        // File path where the check-ins will be saved
+
         String filePath = "patient_check_ins.txt";
-        
-        // Format the patient information as a string to be written to the file
+
         String patientInfo = name + "," + id + "\n";
 
         try {
-            // Java NIO package offers a simple way to append text to a file
+
             Files.write(Paths.get(filePath), patientInfo.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-            
-            // Confirmation message (could be replaced with a more user-friendly notification)
+
             System.out.println("Patient Checked-In: " + name);
         } catch (IOException e) {
             e.printStackTrace();
-            // Error handling here (e.g., show an error dialog to the user)
+
         }
     }
 
-    
     private void showGreetPatientView() {
-  
+
     	    VBox checkInView = new VBox(10);
     	    checkInView.setAlignment(Pos.CENTER);
     	    checkInView.setPadding(new Insets(15));
@@ -567,7 +528,7 @@ public class HospitalManagementSystem extends Application {
 
     	    TextField patientNameField = new TextField();
     	    patientNameField.setPromptText("Enter Patient's Name");
-    	    
+
     	    TextField patientIDField = new TextField();
     	    patientIDField.setPromptText("Enter Patient's ID");
 
@@ -579,12 +540,8 @@ public class HospitalManagementSystem extends Application {
 
     	    checkInView.getChildren().addAll(checkInLabel, patientNameField, patientIDField, checkInButton, backButton);
     	    rootLayout.setCenter(checkInView);
-    	
-
-    	
 
     }
-
 
     private void showNurseDashboard() {
         VBox nurseDashboard = new VBox(10);
@@ -613,7 +570,6 @@ public class HospitalManagementSystem extends Application {
         rootLayout.setCenter(nurseDashboard);
     }
 
-
     private void showDoctorDashboard() {
         VBox doctorDashboard = new VBox(10);
         doctorDashboard.setAlignment(Pos.CENTER);
@@ -622,57 +578,46 @@ public class HospitalManagementSystem extends Application {
         Label dashboardLabel = new Label("Doctor Dashboard");
         dashboardLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
 
-        // Access Patient History
         Button accessHistoryButton = new Button("Access Patient History");
-        accessHistoryButton.setOnAction(e -> showAccessHistoryView()); // You'll need to implement this to match your data model
+        accessHistoryButton.setOnAction(e -> showAccessHistoryView()); 
 
-        // List Prescribed Medications
         Button listMedicationsButton = new Button("List Prescribed Medications");
-        listMedicationsButton.setOnAction(e -> listPrescribedMedications()); // You'll need to create this method
+        listMedicationsButton.setOnAction(e -> listPrescribedMedications()); 
 
-        // Send Prescription to Pharmacy
         Button sendPrescriptionButton = new Button("Send Prescription to Pharmacy");
-        sendPrescriptionButton.setOnAction(e -> sendPrescriptionToPharmacy()); // You'll need to create this method
+        sendPrescriptionButton.setOnAction(e -> sendPrescriptionToPharmacy()); 
 
-        // Access Patient Records
         Button accessRecordsButton = new Button("Access Patient Records");
-        accessRecordsButton.setOnAction(e -> accessPatientRecords()); // You'll need to create this method
+        accessRecordsButton.setOnAction(e -> accessPatientRecords()); 
 
-        // Back to Home Dashboard or Log Out
         Button homeButton = new Button("Home");
-        homeButton.setOnAction(e -> showDoctorDashboard()); // Refreshes the Doctor Dashboard
+        homeButton.setOnAction(e -> showDoctorDashboard()); 
 
         Button logoutButton = new Button("Log Out");
-        logoutButton.setOnAction(e -> showLogin()); // Returns to the Login Screen
+        logoutButton.setOnAction(e -> showLogin()); 
 
         doctorDashboard.getChildren().addAll(dashboardLabel, accessHistoryButton, listMedicationsButton, sendPrescriptionButton, accessRecordsButton, homeButton, logoutButton);
         rootLayout.setCenter(doctorDashboard);
     }
 
-   
-
     private void listPrescribedMedications() {
-        // Main container for this view
+
         VBox mainContainer = new VBox(20);
         mainContainer.setPadding(new Insets(20));
         mainContainer.setStyle("-fx-background-color: #f0f0f0;");
 
-        // Patient Information at the top
         Label patientInfoLabel = new Label("Patient: John Doe");
         patientInfoLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #206090; -fx-padding: 5px;");
         HBox patientInfoBox = new HBox(patientInfoLabel);
         patientInfoBox.setStyle("-fx-background-color: #e0e0e0; -fx-border-color: #c0c0c0; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-        // Back button
         Button backButton = new Button("Back");
         backButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
-        backButton.setOnAction(e -> showDoctorDashboard()); // Assuming showDoctorDashboard is a method to go back
+        backButton.setOnAction(e -> showDoctorDashboard()); 
 
-        // Title for the Medications section
         Label title = new Label("Prescribed Medications");
         title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
 
-        // Medication details
         Label medicationDetails = new Label(
                 "Medication: Amoxicillin\n" +
                         "Dosage: 500mg\n" +
@@ -687,11 +632,9 @@ public class HospitalManagementSystem extends Application {
         );
         medicationDetails.setStyle("-fx-background-color: white; -fx-padding: 10px;");
 
-        // Add components to the main container
         mainContainer.getChildren().addAll(backButton, patientInfoBox, title, medicationDetails);
 
-        // Set the main container as the center of the root layout
-        rootLayout.setCenter(mainContainer); // Assuming rootLayout is the main layout in your scene
+        rootLayout.setCenter(mainContainer); 
     }
 
     private void sendPrescriptionToPharmacy() {
@@ -699,15 +642,12 @@ public class HospitalManagementSystem extends Application {
         prescriptionForm.setPadding(new Insets(20));
         prescriptionForm.setStyle("-fx-background-color: #f0f0f0;");
 
-        // Title
         Label formTitle = new Label("Send Prescription to Pharmacy");
         formTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
 
-        // Patient Information
         Label patientInfoLabel = new Label("Patient: John Doe");
         patientInfoLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #206090; -fx-padding: 5px;");
 
-        // Prescription Details Form
         TextField medicationField = new TextField();
         medicationField.setPromptText("Medication");
 
@@ -719,13 +659,13 @@ public class HospitalManagementSystem extends Application {
 
         ComboBox<String> pharmacyComboBox = new ComboBox<>();
         pharmacyComboBox.setPromptText("Select Pharmacy");
-        // Hypothetical pharmacy names for the combo box
+
         pharmacyComboBox.getItems().addAll("Pharmacy A", "Pharmacy B", "Pharmacy C");
 
         Button sendButton = new Button("Send to Pharmacy");
         sendButton.setStyle("-fx-background-color: #5cb85c; -fx-text-fill: white;");
         sendButton.setOnAction(e -> {
-            // Logic to handle sending the prescription
+
             System.out.println("Sending prescription: " + medicationField.getText() + ", " +
                     dosageField.getText() + ", " +
                     frequencyField.getText() + " to " + pharmacyComboBox.getValue());
@@ -733,16 +673,13 @@ public class HospitalManagementSystem extends Application {
 
         });
 
-        // Back button
         Button backButton = new Button("Back");
         backButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
-        backButton.setOnAction(e -> showDoctorDashboard()); // Assume showDoctorDashboard is a method to go back
+        backButton.setOnAction(e -> showDoctorDashboard()); 
 
-        // Adding all elements to the form
         prescriptionForm.getChildren().addAll(formTitle, patientInfoLabel, medicationField, dosageField, frequencyField, pharmacyComboBox, sendButton, backButton);
 
-        // Set the prescription form as the center of the root layout
-        rootLayout.setCenter(prescriptionForm); // Assuming rootLayout is the main layout in your scene
+        rootLayout.setCenter(prescriptionForm); 
     }
 
     private void accessPatientRecords() {
@@ -760,16 +697,16 @@ public class HospitalManagementSystem extends Application {
         submitButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
         submitButton.setOnAction(e -> {
             String patientId = patientIdField.getText();
-            // Logic to verify the patient ID could go here, such as checking if the ID exists in the database
-            if (patientId.equals("1234")) { // Replace with actual verification logic
-                showPatientPortal(this::showDoctorDashboard); // Assuming this method displays the patient portal for the given ID
+
+            if (patientId.equals("1234")) { 
+                showPatientPortal(this::showDoctorDashboard); 
             } else {
                 showAlert("Error", "Patient ID not found. Please try again.");
             }
         });
 
         patientRecordsForm.getChildren().addAll(formTitle, patientIdField, submitButton);
-        rootLayout.setCenter(patientRecordsForm); // Assuming rootLayout is the main layout in your scene
+        rootLayout.setCenter(patientRecordsForm); 
     }
 
     private void showAlert(String title, String content) {
