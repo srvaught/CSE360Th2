@@ -20,7 +20,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -499,36 +502,53 @@ public class HospitalManagementSystem extends Application {
         
     }
 
+    private void savePatientCheckIn(String name, String id) {
+        // File path where the check-ins will be saved
+        String filePath = "patient_check_ins.txt";
+        
+        // Format the patient information as a string to be written to the file
+        String patientInfo = name + "," + id + "\n";
+
+        try {
+            // Java NIO package offers a simple way to append text to a file
+            Files.write(Paths.get(filePath), patientInfo.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            
+            // Confirmation message (could be replaced with a more user-friendly notification)
+            System.out.println("Patient Checked-In: " + name);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Error handling here (e.g., show an error dialog to the user)
+        }
+    }
+
     
     private void showGreetPatientView() {
-        VBox greetPatientView = new VBox(10);
-        greetPatientView.setAlignment(Pos.CENTER);
-        greetPatientView.setPadding(new Insets(15));
+  
+    	    VBox checkInView = new VBox(10);
+    	    checkInView.setAlignment(Pos.CENTER);
+    	    checkInView.setPadding(new Insets(15));
 
-        Label greetingLabel = new Label("Greet Patients");
-        greetingLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+    	    Label checkInLabel = new Label("Patient Check-In");
+    	    checkInLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
 
-        // Assuming getTodaysAppointments returns a list of patient names or IDs scheduled for today
-        ListView<String> appointmentList = new ListView<>();
-        appointmentList.getItems().addAll(/* getTodaysAppointments() */); // Populate with actual data
+    	    TextField patientNameField = new TextField();
+    	    patientNameField.setPromptText("Enter Patient's Name");
+    	    
+    	    TextField patientIDField = new TextField();
+    	    patientIDField.setPromptText("Enter Patient's ID");
 
-        Button greetButton = new Button("Greet Selected Patient");
-        greetButton.setOnAction(e -> {
-            String selectedPatient = appointmentList.getSelectionModel().getSelectedItem();
-            // Logic to mark the patient as greeted
-            System.out.println("Greeted Patient: " + selectedPatient);
-        });
+    	    Button checkInButton = new Button("Check-In");
+    	    checkInButton.setOnAction(e -> savePatientCheckIn(patientNameField.getText(), patientIDField.getText()));
 
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> {
-            // Navigate back to the nurse dashboard
-            showNurseDashboard();
-            // If you have different dashboards for nurses and doctors, you might want to make this dynamic
-            // based on the user role
-        });
+    	    Button backButton = new Button("Back");
+    	    backButton.setOnAction(e -> showNurseDashboard());
 
-        greetPatientView.getChildren().addAll(greetingLabel, appointmentList, greetButton, backButton);
-        rootLayout.setCenter(greetPatientView);
+    	    checkInView.getChildren().addAll(checkInLabel, patientNameField, patientIDField, checkInButton, backButton);
+    	    rootLayout.setCenter(checkInView);
+    	
+
+    	
+
     }
 
 
