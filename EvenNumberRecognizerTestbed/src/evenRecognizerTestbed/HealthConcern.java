@@ -15,7 +15,7 @@ public class HealthConcern
         this.notedBy = notedBy;
         this.dateNoted = dateNoted;
     }
-    public void updateDescription(String newDescription) 
+    public void updateDescription(String newDescription)  
     {
         this.description = newDescription;
     }
