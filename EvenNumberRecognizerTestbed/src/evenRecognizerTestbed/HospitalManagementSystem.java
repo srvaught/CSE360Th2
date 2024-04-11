@@ -449,7 +449,7 @@ public class HospitalManagementSystem extends Application {
         });
 
         Button backButton = new Button("Back");
-        backButton.setOnAction(e -> showNurseDashboard());
+        backButton.setOnAction(e -> showDoctorDashboard());
         accessHistoryView.getChildren().addAll(new Label("Access Patient History"), patientIdLookupField, lookupButton, historyTextArea, backButton);
         rootLayout.setCenter(accessHistoryView);
     }
