@@ -164,24 +164,55 @@ public class HospitalManagementSystem extends Application {
 
     
     private void handleLogin(String username, String password, ToggleGroup roleGroup) {
+        User user = users.get(username); // Attempt to get the user by username
         RadioButton selectedRole = (RadioButton) roleGroup.getSelectedToggle();
         String userRole = selectedRole.getText();
 
-        switch (userRole) {
-            case "Patient":
-                showPatientPortal();
-                break;
-            case "Doctor":
-                showDoctorDashboard();
-                break;
-            case "Nurse":
-                showNurseDashboard();
-                break;
-            default:
-                System.out.println("Error: Unknown role selected.");
-                break;
+        // Check if the user exists and password matches
+        if (user != null && user.authenticate(password)) {
+            // Check user's role and show the appropriate dashboard
+            switch (userRole) {
+                case "Patient":
+                    if ("Patient".equals(user.role)) {
+                        showPatientPortal();
+                    } else {
+                        showError("Login Failed", "You do not have Patient access.");
+                    }
+                    break;
+                case "Doctor":
+                    if ("Doctor".equals(user.role)) {
+                        showDoctorDashboard();
+                    } else {
+                        showError("Login Failed", "You do not have Doctor access.");
+                    }
+                    break;
+                case "Nurse":
+                    // Show Nurse Verification before dashboard
+                    if ("Nurse".equals(user.role)) {
+                        showNurseVerification();
+                    } else {
+                        showError("Login Failed", "You do not have Nurse access.");
+                    }
+                    break;
+                default:
+                    showError("Login Failed", "Unknown role selected.");
+                    break;
+            }
+        } else {
+            // Show error if login fails
+            showError("Login Failed", "Invalid username or password.");
         }
     }
+
+    // Method to show error popups
+    private void showError(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 
     private void showError(String message) {
         Label errorLabel = new Label(message);
