@@ -65,6 +65,6 @@ public class Patient extends User
 
     public void sendMessage(Message message) 
     {
-        //TODO
+        
     }
 }
