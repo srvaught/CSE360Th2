@@ -446,7 +446,7 @@ public class HospitalManagementSystem extends Application {
         });
 
         Button backButton = new Button("Back");
-        backButton.setOnAction(e -> showNurseDashboard());
+        backButton.setOnAction(e -> showDoctorDashboard());
         accessHistoryView.getChildren().addAll(new Label("Access Patient History"), patientIdLookupField, lookupButton, historyTextArea, backButton);
         rootLayout.setCenter(accessHistoryView);
     }
@@ -618,9 +618,46 @@ public class HospitalManagementSystem extends Application {
    
 
     private void listPrescribedMedications() {
-        // Placeholder method for listing prescribed medications.
-        System.out.println("Listing prescribed medications...");
-        // Implement functionality based on your application's requirements
+        // Main container for this view
+        VBox mainContainer = new VBox(20);
+        mainContainer.setPadding(new Insets(20));
+        mainContainer.setStyle("-fx-background-color: #f0f0f0;");
+
+        // Patient Information at the top
+        Label patientInfoLabel = new Label("Patient: John Doe");
+        patientInfoLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #206090; -fx-padding: 5px;");
+        HBox patientInfoBox = new HBox(patientInfoLabel);
+        patientInfoBox.setStyle("-fx-background-color: #e0e0e0; -fx-border-color: #c0c0c0; -fx-border-width: 1px; -fx-border-radius: 5px;");
+
+        // Back button
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #206090; -fx-text-fill: white;");
+        backButton.setOnAction(e -> showDoctorDashboard()); // Assuming showDoctorDashboard is a method to go back
+
+        // Title for the Medications section
+        Label title = new Label("Prescribed Medications");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #206090;");
+
+        // Medication details
+        Label medicationDetails = new Label(
+                "Medication: Amoxicillin\n" +
+                        "Dosage: 500mg\n" +
+                        "Frequency: Three times a day\n" +
+                        "Prescribed by: Dr. Smith\n" +
+                        "Date: 01/01/2024\n\n" +
+                        "Medication: Ibuprofen\n" +
+                        "Dosage: 400mg\n" +
+                        "Frequency: As needed for pain\n" +
+                        "Prescribed by: Dr. Smith\n" +
+                        "Date: 15/01/2024"
+        );
+        medicationDetails.setStyle("-fx-background-color: white; -fx-padding: 10px;");
+
+        // Add components to the main container
+        mainContainer.getChildren().addAll(backButton, patientInfoBox, title, medicationDetails);
+
+        // Set the main container as the center of the root layout
+        rootLayout.setCenter(mainContainer); // Assuming rootLayout is the main layout in your scene
     }
 
     private void sendPrescriptionToPharmacy() {
