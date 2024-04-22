@@ -1,0 +1,51 @@
+<!GEN_INFO:BGN>
+Patient ID: GeneratedID
+Username: sws
+Password: SamerAli123!
+Name: Samer Al sws
+Role: Patient
+DOB: 20240423
+Gender: male
+Address: 123 eke
+Contact Number: 123123123
+Email: samer@gmail.com
+<!GEN_INFO:END>
+<!MED_HST:BGN>
+Medical History:
+Eczema
+Other Stuff
+here
+now you have cancer
+<!MED_HST:END>
+<!CRT_MED:BGN>
+Current Medications:
+Adderall
+stuff
+stuff
+stuff
+new medication here
+<!CRT_MED:END>
+<!MSG_IBX:BGN>
+Messages:
+From: drsamm;  (Doctor): yoyoyo
+From: drsamm;  (Doctor): hello bb
+From: 34565; Hello Samer. I hope you're feeling well today!
+From: 12345; Hello, This is Bobby!
+<!MSG_IBX:END>
+<!SMRY_VST:BGN>
+<2024-04-21 ----------- QUESTIONS BY Samer Al sws ----------- >
+questions here
+<2024-04-21 ----------- END OF QUESTIONS ----------- >
+<!SMRY_VST:END>
+<!VTL_SMRY:BGN>
+<2024-04-21 ----------- VITALS TAKEN BY Samer Ali ----------- >
+Weight (kg): 1233
+Height (cm): 1233
+Body Temperature (°C): 1233
+Blood Pressure (mmHg): 1233
+Heart Rate (bpm): 1233
+Respiratory Rate (breaths/min): 1233
+Oxygen Saturation (%): 1233
+<2024-04-21 ----------- END OF VITALS ----------- >
+<!VTL_SMRY:END>
+

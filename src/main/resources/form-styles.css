@@ -1,0 +1,57 @@
+.root {
+    -fx-padding: 20px;
+    -fx-spacing: 10px; /* Space between elements */
+    -fx-alignment: center;
+    -fx-background-color: #f4f4f4; /* Light grey background */
+}
+
+.title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark grey text */
+}
+
+.text-field, .text-area {
+    -fx-min-width: 300px;
+    -fx-max-width: 300px;
+    -fx-min-height: 40px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc; /* Light grey border */
+    -fx-border-radius: 5px;
+}
+
+.text-area {
+    -fx-min-height: 80px; /* Taller than text fields */
+}
+
+.button{
+    -fx-background-color: #0078d7; /* Blue background */
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+}
+
+
+
+.button:disabled {
+    -fx-opacity: 0.5; /* Make button look disabled when it is disabled */
+}
+
+.hyperlink {
+    -fx-underline: true; /* Undarline hyperlinks */
+}
+
+.button:hover {
+    -fx-background-color: #003f7f;
+}
+
+.hyperlink {
+    -fx-text-fill: #005a9e;
+    -fx-underline: true;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #003f7f;
+}

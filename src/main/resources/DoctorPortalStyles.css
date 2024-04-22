@@ -1,0 +1,110 @@
+.root {
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-background-color: #FAFAFA;
+}
+
+.search-area {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+
+.search-area .text-field, .search-area .date-picker {
+    -fx-pref-width: 250px;
+    -fx-pref-height: 35px;
+    -fx-font-size: 14px;
+}
+
+.search-area .button {
+    -fx-pref-height: 35px;
+    -fx-pref-width: 150px;
+}
+
+.profile-section, .history-section, .diagnosis-section, .treatment-section, .medication-section, .notification-section {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+}
+
+.profile-section .label, .history-section .label, .diagnosis-section .label,
+.treatment-section .label, .medication-section .label, .notification-section .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a2a2a;
+}
+
+.text-field, .text-area, .combo-box {
+    -fx-border-color: #c7c7c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: #3090C7;
+}
+
+.button {
+    -fx-background-color: #3090C7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #1C86EE;
+}
+
+.list-view {
+    -fx-background-color: #f5f5f5;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.list-cell {
+    -fx-padding: 10;
+}
+
+.hyperlink {
+    -fx-text-fill: #3090C7;
+    -fx-font-size: 14px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #1C86EE;
+}
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #c7c7c7;
+}
+
+.logout-button {
+    -fx-background-color: #FF6347;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-translate-y: -10; /* Lifts the button up from the very bottom */
+    -fx-translate-x: -10; /* Moves the button left from the very right */
+    -fx-alignment: bottom-right;
+}
+
+.logout-button:hover {
+    -fx-background-color: #FF4500;
+}
+
+.notification-section {
+    -fx-background-color: #E3F2FD;
+    -fx-padding: 15;
+    -fx-spacing: 5;
+}
+
+.notification-label {
+    -fx-wrap-text: true;
+    -fx-font-size: 14px;
+}

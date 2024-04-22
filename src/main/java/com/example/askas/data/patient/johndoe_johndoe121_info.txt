@@ -1,0 +1,22 @@
+Patient ID: 12345
+Username: JohnDoe121
+Password: JohnDoe12345
+Name: John Doe
+Role: Patient
+DOB: 1985-04-12
+Gender: Male
+Address: 123 Elm St, Springfield, State, 12345
+Contact Number: (555) 555-5555
+Email: john.doe@example.com
+
+Medical History:
+- Surgery: Appendectomy, Date: 2010-03-15
+- Allergy: Penicillin, Severity: High
+
+Current Medications:
+- Medication: Aspirin, Dosage: 100mg, Frequency: Daily
+- Medication: Metformin, Dosage: 500mg, Frequency: Twice a day
+
+Messages:
+- Date: 2021-06-01, From: Dr. Smith, Message: Annual check-up results are normal.
+- Date: 2021-07-20, From: Nurse Jane, Message: Reminder for vaccine appointment.

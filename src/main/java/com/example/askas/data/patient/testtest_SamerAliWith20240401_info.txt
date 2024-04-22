@@ -1,0 +1,6 @@
+stUsername: testtest
+Full Name: Samer Ali
+Email: testtest@gmail.com
+Password: Samerali123!
+Date of Birth: 20240401
+Role: Patient

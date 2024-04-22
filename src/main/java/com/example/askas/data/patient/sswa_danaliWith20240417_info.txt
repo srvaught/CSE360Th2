@@ -1,0 +1,30 @@
+<!GEN_INFO:BGN>
+Patient ID: GeneratedID
+Username: sswa
+Password: SamerAli123!
+Name: dan ali
+Role: Patient
+DOB: 20240417
+Gender: male
+Address: 123 S ee
+Contact Number: 1234567890
+Email: samer@gmail.com
+<!GEN_INFO:END>
+<!MED_HST:BGN>
+Medical History:
+
+<!MED_HST:END>
+<!CRT_MED:BGN>
+Current Medications:
+
+<!CRT_MED:END>
+<!MSG_IBX:BGN>
+Messages:
+From: drsamm;  (Doctor): hello dan ali
+<!MSG_IBX:END>
+<!VTL_SMRY:BGN>
+Vitals:
+<!VTL_SMRY:END>
+<!SMRY_VST:BGN>
+Summary Visits:
+<!SMRY_VST:END>

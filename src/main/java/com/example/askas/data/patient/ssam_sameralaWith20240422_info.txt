@@ -1,0 +1,22 @@
+Patient ID: GeneratedID
+Username: ssam
+Password: SamerAli123!
+Name: Samer Aliiii
+Role: Patient
+DOB: 20240422
+Gender: male
+Address: 123 S libra 
+Contact Number: 1234567890
+Email: sas@gmail.com
+Medical History:
+medical history
+Current Medications:
+meds
+Messages:
+From: 12121; Hello Patient<2024-04-21 ----------- VITALS TAKEN BY Samer Aliiii ----------- >
+Weight: 23423
+Height: 4324
+Body Temperature: 4324
+Blood Pressure: 2342
+<2024-04-21 ----------- END OF VITALS ----------- >
+

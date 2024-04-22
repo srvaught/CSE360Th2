@@ -1,0 +1,87 @@
+.dashboard {
+    -fx-spacing: 10px;
+}
+
+.dashboard-card {
+    -fx-padding: 20px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #0078d7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.dashboard-card:hover {
+    -fx-background-color: #005a9e;
+}
+
+/* Additional styles for the dashboard cards */
+/* ... */
+
+.dashboard {
+    -fx-spacing: 20;
+    -fx-alignment: top-center;
+}
+
+.dashboard-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.dashboard-card {
+    -fx-min-width: 200px;
+    -fx-min-height: 50px;
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.dashboard-card:hover {
+    -fx-background-color: #005a9e;
+}
+
+.logout-button {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c9302c;
+}
+
+/* Additional styling for padding and margins as needed */
+.logout-button {
+    -fx-background-color: #FF6347; /* A shade of red */
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 4;
+}
+
+.logout-button:hover {
+    -fx-background-color: #FF4500; /* A darker shade of red for hover effect */
+}
+
+.logout-container {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-background-color: transparent; /* or any other desired color */
+}
+
+/* ... existing styles ... */
+
+.logout-button {
+    -fx-background-color: #FF6347; /* A shade of red */
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 4;
+    -fx-translate-y: -10; /* Lifts the button up from the very bottom */
+    -fx-translate-x: -10; /* Moves the button left from the very right */
+}

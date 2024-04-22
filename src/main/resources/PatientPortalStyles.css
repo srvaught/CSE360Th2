@@ -1,0 +1,99 @@
+.root {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+    -fx-background-color: #ffffff;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a2a2a;
+    -fx-padding: 0 0 10 0;
+}
+
+.section {
+    -fx-padding: 20;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 1 0;
+}
+
+.text-field, .text-area, .list-view {
+    -fx-border-color: #c7c7c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #3090C7;
+}
+
+.button {
+    -fx-background-color: #3090C7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.button:hover {
+    -fx-background-color: #1C86EE;
+}
+
+.list-view {
+    -fx-background-color: #f5f5f5;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.list-cell {
+    -fx-padding: 10;
+}
+
+.hyperlink {
+    -fx-text-fill: #3090C7;
+    -fx-font-size: 14px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #1C86EE;
+}
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #c7c7c7;
+}
+
+/* ... existing styles ... */
+
+.logout-button {
+    -fx-background-color: #FF6347; /* A shade of red */
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 4;
+}
+
+.logout-button:hover {
+    -fx-background-color: #FF4500; /* A darker shade of red for hover effect */
+}
+
+.logout-container {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-background-color: transparent; /* or any other desired color */
+}
+
+/* ... existing styles ... */
+
+.logout-button {
+    -fx-background-color: #FF6347; /* A shade of red */
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 4;
+    -fx-translate-y: -10; /* Lifts the button up from the very bottom */
+    -fx-translate-x: -10; /* Moves the button left from the very right */
+}
+
+.logout-button:hover {
+    -fx-background-color: #FF4500; /* A darker shade of red for hover effect */
+}

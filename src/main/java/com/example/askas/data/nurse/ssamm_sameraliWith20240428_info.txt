@@ -1,0 +1,15 @@
+Patient ID: GeneratedID
+Username: ssamm
+Password: SamerAli123!
+Name: Samer Ali
+Role: Nurse
+DOB: 20240428
+Gender: male
+Address: Unspecified
+Contact Number: Unspecified
+Email: samerrr@gmail.com
+Medical History:
+N/A
+Current Medications:
+N/A
+Messages:

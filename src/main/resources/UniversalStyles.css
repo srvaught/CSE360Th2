@@ -1,0 +1,99 @@
+.root {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+
+.title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field, .date-picker {
+    -fx-padding: 8;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 4;
+}
+
+.button {
+    -fx-background-color: #005a9e;
+    -fx-text-fill: white;
+    -fx-padding: 10 10;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #003f7f;
+}
+
+.hyperlink {
+    -fx-text-fill: #005a9e;
+    -fx-underline: true;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #003f7f;
+}
+
+.root {
+    -fx-spacing: 20;
+    -fx-padding: 20;
+}
+
+.section {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 5;
+}
+
+.text-field {
+    -fx-pref-width: 300;
+    -fx-pref-height: 30;
+}
+
+.list-view {
+    -fx-pref-height: 100;
+}
+
+.text-area {
+    -fx-pref-width: 300;
+    -fx-pref-height: 100;
+}
+
+.button {
+    -fx-pref-width: 300;
+    -fx-pref-height: 30;
+}
+
+/* Assuming UniversalStyles.css already has base styles for .root, .button, etc. */
+
+.search-patient-root {
+    -fx-spacing: 10;
+    -fx-padding: 20;
+    -fx-alignment: top-center;
+}
+
+.search-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 15 0;
+}
+
+.search-field {
+    -fx-pref-width: 200px;
+    -fx-max-width: 300px;
+    -fx-pref-height: 30px;
+}
+
+.search-button {
+    -fx-background-color: #3090C7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+}
+
+.search-button:hover {
+    -fx-background-color: #1C86EE;
+}

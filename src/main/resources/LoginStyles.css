@@ -1,0 +1,54 @@
+.root {
+    -fx-padding: 30;
+    -fx-alignment: center;
+    -fx-background-color: #f2f2f2;
+}
+
+.label-header {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #005a9e;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+
+.role-buttons .toggle-button {
+    -fx-background-color: transparent, #ffffff;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 15;
+    -fx-text-fill: #5a5a5a;
+    -fx-font-weight: bold;
+    -fx-border-color: #c7c7c7;
+    -fx-border-radius: 15;
+    -fx-padding: 8 15;
+}
+
+.role-buttons .toggle-button:selected {
+    -fx-background-color: #005a9e;
+    -fx-text-fill: white;
+}
+
+.text-field, .password-field {
+    -fx-background-radius: 5;
+    -fx-padding: 12;
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 5;
+}
+
+.login-button {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 12 30;
+    -fx-font-weight: bold;
+}
+
+.login-button:hover {
+    -fx-background-color: #218838;
+}
+
+/* Optional: You can add this if you want to change the look of the text fields on focus */
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #80bdff;
+    -fx-background-color: #e7f5fe;
+}

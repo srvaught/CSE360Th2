@@ -1,0 +1,20 @@
+Patient ID: GeneratedID
+Username: drsam
+Password: Samerali123!
+Name: dr samer ali
+Role: Doctor
+DOB: 20240416
+Gender: male
+Address: Unspecified
+Contact Number: Unspecified
+Email: samer@gmail.com
+Medical History:
+N/A
+Current Medications:
+N/A
+Messages:
+From: sws;  (patient): d
+From: sws;  (patient): g
+From: sws;  (patient): hi
+From: sws;  (patient): hello
+From: sws;  (patient): be

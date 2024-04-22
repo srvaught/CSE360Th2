@@ -1,0 +1,15 @@
+Patient ID: GeneratedID
+Username: asam1
+Password: SamerAli123!
+Name: Samer Al-Ali121
+Role: Patient
+DOB: 20240430
+Gender: male
+Address: 1212 S libra
+Contact Number: 1234567890
+Email: ss@gmail.com
+Medical History:
+medical history example
+Current Medications:
+current medication example
+Messages:

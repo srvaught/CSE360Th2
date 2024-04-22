@@ -1,0 +1,13 @@
+Patient ID: GeneratedID
+Username: sam121
+Password: Samerali123!
+Name: samer ali
+Role: Patient
+DOB: 20240423
+Gender: 
+Address: 123 S Libra Pl.
+Contact Number: 1234567890
+Email: samer@gmail.com
+Medical History:
+Current Medications:
+Messages:

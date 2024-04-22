@@ -1,0 +1,32 @@
+<!GEN_INFO:BGN>
+Patient ID: GeneratedID
+Username: drsamm
+Password: Samerali123!
+Name: dr samer ali 2
+Role: Doctor
+DOB: 20240401
+Gender: male
+Address: Unspecified
+Contact Number: Unspecified
+Email: samer@gmail.com
+<!GEN_INFO:END>
+<!MED_HST:BGN>
+Medical History:
+N/A
+<!MED_HST:END>
+<!CRT_MED:BGN>
+Current Medications:
+N/A
+<!CRT_MED:END>
+<!MSG_IBX:BGN>
+Messages:
+From: Samer Al sws;  (Patient): hello doc im bbdd
+From: ssamm; Hello Doctor samer ali, im a nurse
+From: sws; Hey Doc! im sam
+<!MSG_IBX:END>
+<!VTL_SMRY:BGN>
+Vitals:
+<!VTL_SMRY:END>
+<!SMRY_VST:BGN>
+Summary Visits:
+<!SMRY_VST:END>
